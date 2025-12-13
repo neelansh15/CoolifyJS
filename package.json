@@ -1,7 +1,7 @@
 {
   "name": "coolifyjs",
   "version": "0.1.0",
-  "description": "A professional, type-safe TypeScript SDK for the Coolify API",
+  "description": "A TypeScript SDK for the Coolify API",
   "type": "module",
   "main": "./dist/coolifyjs.cjs",
   "module": "./dist/coolifyjs.js",
