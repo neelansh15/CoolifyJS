@@ -17,7 +17,7 @@ import type { CoolifyClientConfig } from './types/common';
  *
  * @example
  * ```typescript
- * import { CoolifyClient } from 'coolifyjs';
+ * import { CoolifyClient } from '@neelansh/coolifyjs';
  *
  * const coolify = new CoolifyClient({
  *   baseUrl: 'https://coolify.example.com/api/v1',

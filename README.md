@@ -14,13 +14,13 @@ A  TypeScript SDK for the [Coolify API](https://coolify.io/docs/api-reference/au
 ## Installation
 
 ```bash
-npm install coolifyjs
+npm install @neelansh/coolifyjs
 ```
 
 ## Quick Start
 
 ```typescript
-import { CoolifyClient } from 'coolifyjs';
+import { CoolifyClient } from '@neelansh/coolifyjs';
 
 const coolify = new CoolifyClient({
   baseUrl: 'https://coolify.example.com/api/v1',
@@ -398,7 +398,7 @@ import {
   CoolifyValidationError,
   CoolifyRateLimitError,
   CoolifyServerError,
-} from 'coolifyjs';
+} from '@neelansh/coolifyjs';
 
 try {
   await coolify.applications.get('non-existent-uuid');
@@ -435,7 +435,7 @@ import type {
   PrivateKey,
   GitHubApp,
   CoolifyClientConfig,
-} from 'coolifyjs';
+} from '@neelansh/coolifyjs';
 ```
 
 ## Development

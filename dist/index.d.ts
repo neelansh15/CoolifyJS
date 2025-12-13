@@ -262,7 +262,7 @@ export declare class CoolifyAuthError extends CoolifyError {
  *
  * @example
  * ```typescript
- * import { CoolifyClient } from 'coolifyjs';
+ * import { CoolifyClient } from '@neelansh/coolifyjs';
  *
  * const coolify = new CoolifyClient({
  *   baseUrl: 'https://coolify.example.com/api/v1',
