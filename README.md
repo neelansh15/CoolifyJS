@@ -472,6 +472,9 @@ npm run clean
 3. Update the `repository`, `bugs`, and `homepage` URLs in `package.json` with your GitHub repository
 
 ### Publishing Commands
+```
+export NPM_TOKEN=<MY_NPM_TOKEN>
+```
 
 ```bash
 # Dry run (test publish without actually publishing)
