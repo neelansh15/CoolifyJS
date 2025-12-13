@@ -876,4 +876,4 @@ export {
   SystemResource,
   TeamsResource
 };
-//# sourceMappingURL=coolify-sdk.js.map
+//# sourceMappingURL=coolifyjs.js.map

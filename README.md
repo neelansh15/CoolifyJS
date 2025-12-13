@@ -1,4 +1,4 @@
-# Coolify SDK
+# CoolifyJS
 
 A professional, type-safe TypeScript SDK for the [Coolify API](https://coolify.io/docs/api-reference/authorization). This SDK provides a clean, intuitive interface for managing your Coolify self-hosted PaaS instance programmatically.
 
@@ -14,13 +14,13 @@ A professional, type-safe TypeScript SDK for the [Coolify API](https://coolify.i
 ## Installation
 
 ```bash
-npm install coolify-sdk
+npm install coolifyjs
 ```
 
 ## Quick Start
 
 ```typescript
-import { CoolifyClient } from 'coolify-sdk';
+import { CoolifyClient } from 'coolifyjs';
 
 const coolify = new CoolifyClient({
   baseUrl: 'https://coolify.example.com/api/v1',
@@ -398,7 +398,7 @@ import {
   CoolifyValidationError,
   CoolifyRateLimitError,
   CoolifyServerError,
-} from 'coolify-sdk';
+} from 'coolifyjs';
 
 try {
   await coolify.applications.get('non-existent-uuid');
@@ -435,7 +435,7 @@ import type {
   PrivateKey,
   GitHubApp,
   CoolifyClientConfig,
-} from 'coolify-sdk';
+} from 'coolifyjs';
 ```
 
 ## Development
@@ -455,6 +455,54 @@ npm run build
 
 # Type check
 npm run lint
+
+# Clean build artifacts
+npm run clean
+```
+
+## Publishing to NPM
+
+### First-time Setup
+
+1. Create an NPM account at [npmjs.com](https://www.npmjs.com/)
+2. Login to NPM:
+   ```bash
+   npm login
+   ```
+3. Update the `repository`, `bugs`, and `homepage` URLs in `package.json` with your GitHub repository
+
+### Publishing Commands
+
+```bash
+# Dry run (test publish without actually publishing)
+npm run release:dry
+
+# Publish current version
+npm run release
+
+# Publish with version bump
+npm run release:patch   # 1.0.0 -> 1.0.1
+npm run release:minor   # 1.0.0 -> 1.1.0
+npm run release:major   # 1.0.0 -> 2.0.0
+```
+
+### Manual Publishing
+
+```bash
+# 1. Run tests
+npm run test:run
+
+# 2. Build the package
+npm run build
+
+# 3. Bump version (choose one)
+npm version patch  # or minor, major
+
+# 4. Publish to NPM
+npm publish
+
+# 5. Push tags to git
+git push --follow-tags
 ```
 
 ## License

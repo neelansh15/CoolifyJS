@@ -876,4 +876,4 @@ exports.ServersResource = ServersResource;
 exports.ServicesResource = ServicesResource;
 exports.SystemResource = SystemResource;
 exports.TeamsResource = TeamsResource;
-//# sourceMappingURL=coolify-sdk.cjs.map
+//# sourceMappingURL=coolifyjs.cjs.map

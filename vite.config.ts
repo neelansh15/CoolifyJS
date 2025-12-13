@@ -12,9 +12,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'CoolifySDK',
+      name: 'CoolifyJS',
       formats: ['es', 'cjs'],
-      fileName: (format) => `coolify-sdk.${format === 'es' ? 'js' : 'cjs'}`,
+      fileName: (format) => `coolifyjs.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
       external: [],

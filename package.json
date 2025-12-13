@@ -1,15 +1,15 @@
 {
-  "name": "coolify-sdk",
+  "name": "coolifyjs",
   "version": "1.0.0",
   "description": "A professional, type-safe TypeScript SDK for the Coolify API",
   "type": "module",
-  "main": "./dist/coolify-sdk.cjs",
-  "module": "./dist/coolify-sdk.js",
+  "main": "./dist/coolifyjs.cjs",
+  "module": "./dist/coolifyjs.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/coolify-sdk.js",
-      "require": "./dist/coolify-sdk.cjs",
+      "import": "./dist/coolifyjs.js",
+      "require": "./dist/coolifyjs.cjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -23,19 +23,37 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run test:run && npm run build",
+    "release": "npm run test:run && npm run build && npm publish",
+    "release:dry": "npm run test:run && npm run build && npm publish --dry-run",
+    "release:patch": "npm version patch && npm run release",
+    "release:minor": "npm version minor && npm run release",
+    "release:major": "npm version major && npm run release"
   },
   "keywords": [
     "coolify",
+    "coolifyjs",
     "api",
     "sdk",
     "typescript",
     "devops",
     "self-hosted",
-    "paas"
+    "paas",
+    "deployment",
+    "docker"
   ],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/coolifyjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/coolifyjs/issues"
+  },
+  "homepage": "https://github.com/your-username/coolifyjs#readme",
   "devDependencies": {
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
