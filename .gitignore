@@ -1,2 +1,17 @@
 .cursor/
 node_modules/
+dist/
+
+# Environment and secrets
+.env
+.env.local
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
