@@ -1,0 +1,48 @@
+{
+  "name": "coolify-sdk",
+  "version": "1.0.0",
+  "description": "A professional, type-safe TypeScript SDK for the Coolify API",
+  "type": "module",
+  "main": "./dist/coolify-sdk.cjs",
+  "module": "./dist/coolify-sdk.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/coolify-sdk.js",
+      "require": "./dist/coolify-sdk.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "coolify",
+    "api",
+    "sdk",
+    "typescript",
+    "devops",
+    "self-hosted",
+    "paas"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-dts": "^3.7.0",
+    "vitest": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
