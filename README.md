@@ -1,6 +1,6 @@
 # CoolifyJS
 
-A professional, type-safe TypeScript SDK for the [Coolify API](https://coolify.io/docs/api-reference/authorization). This SDK provides a clean, intuitive interface for managing your Coolify self-hosted PaaS instance programmatically.
+A  TypeScript SDK for the [Coolify API](https://coolify.io/docs/api-reference/authorization). This SDK provides a clean, intuitive interface for managing your Coolify self-hosted PaaS instance programmatically.
 
 ## Features
 
