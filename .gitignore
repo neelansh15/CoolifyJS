@@ -15,3 +15,5 @@ npm-debug.log*
 
 # OS
 .DS_Store
+
+docs/DEPLOYMENT.md
