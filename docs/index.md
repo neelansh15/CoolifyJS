@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/neelansh15/coolifyjs
+    - theme: alt
+      text: View on npm
+      link: https://www.npmjs.com/package/@neelansh/coolifyjs
 
 features:
   - icon: 🔒

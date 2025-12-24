@@ -99,8 +99,17 @@ export default defineConfig({
       { text: 'Examples', link: '/examples/' },
       { text: 'Reference', link: '/reference/' },
       {
-        text: 'GitHub',
-        link: 'https://github.com/neelansh15/coolifyjs',
+        text: 'Links',
+        items: [
+          {
+            text: 'GitHub',
+            link: 'https://github.com/neelansh15/coolifyjs',
+          },
+          {
+            text: 'npm',
+            link: 'https://www.npmjs.com/package/@neelansh/coolifyjs',
+          },
+        ],
       },
     ],
 
