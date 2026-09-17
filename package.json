@@ -1,6 +1,6 @@
 {
   "name": "@neelansh/coolifyjs",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A TypeScript SDK for the Coolify API",
   "type": "module",
   "main": "./dist/coolifyjs.cjs",
