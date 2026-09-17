@@ -19,7 +19,22 @@ import type {
   UpdateApplication,
   ApplicationEnvs,
   ApplicationLogs,
+  MoveApplicationInput,
+  MoveApplicationResponse,
+  MigrateApplicationInput,
+  CloneApplicationInput,
+  CloneApplicationResponse,
+  ApplicationStorage,
+  ApplicationStorages,
+  CreateApplicationStorage,
+  UpdateApplicationStorage,
+  RollbackImagesResponse,
+  RollbackApplicationInput,
+  RollbackApplicationResponse,
+  AddApplicationDestinationInput,
+  CreateApplicationTagInput,
 } from '../types/applications';
+import type { Tag } from '../types/tags';
 
 /**
  * Applications resource for managing Coolify applications
@@ -162,5 +177,122 @@ export class ApplicationsResource {
    */
   async logs(uuid: UUID): Promise<ApplicationLogs> {
     return this.http.get<ApplicationLogs>(`/applications/${uuid}/logs`);
+  }
+
+  /**
+   * Move an application to another environment (organizational only).
+   */
+  async move(uuid: UUID, data: MoveApplicationInput): Promise<MoveApplicationResponse> {
+    return this.http.post<MoveApplicationResponse>(`/applications/${uuid}/move`, data);
+  }
+
+  /**
+   * Migrate an application to another server/destination.
+   */
+  async migrate(uuid: UUID, data: MigrateApplicationInput): Promise<MessageResponse> {
+    return this.http.post<MessageResponse>(`/applications/${uuid}/migrate`, data);
+  }
+
+  /**
+   * Clone an application to a destination.
+   */
+  async clone(uuid: UUID, data: CloneApplicationInput): Promise<CloneApplicationResponse> {
+    return this.http.post<CloneApplicationResponse>(`/applications/${uuid}/clone`, data);
+  }
+
+  /**
+   * List persistent and file storages for an application.
+   */
+  async listStorages(uuid: UUID): Promise<ApplicationStorages> {
+    return this.http.get<ApplicationStorages>(`/applications/${uuid}/storages`);
+  }
+
+  /**
+   * Create a persistent or file storage for an application.
+   */
+  async createStorage(uuid: UUID, data: CreateApplicationStorage): Promise<ApplicationStorage> {
+    return this.http.post<ApplicationStorage>(`/applications/${uuid}/storages`, data);
+  }
+
+  /**
+   * Update a storage entry for an application.
+   */
+  async updateStorage(uuid: UUID, data: UpdateApplicationStorage): Promise<ApplicationStorage> {
+    return this.http.patch<ApplicationStorage>(`/applications/${uuid}/storages`, data);
+  }
+
+  /**
+   * Delete a storage entry for an application by storage UUID.
+   */
+  async deleteStorage(uuid: UUID, storageUuid: UUID): Promise<MessageResponse> {
+    return this.http.delete<MessageResponse>(`/applications/${uuid}/storages/${storageUuid}`);
+  }
+
+  /**
+   * Delete a preview deployment for a pull request.
+   */
+  async deletePreviewDeployment(uuid: UUID, pullRequestId: number): Promise<MessageResponse> {
+    return this.http.delete<MessageResponse>(`/applications/${uuid}/previews/${pullRequestId}`);
+  }
+
+  /**
+   * List tags attached to an application.
+   */
+  async listTags(uuid: UUID): Promise<Tag[]> {
+    return this.http.get<Tag[]>(`/applications/${uuid}/tags`);
+  }
+
+  /**
+   * Add one or more tags to an application.
+   */
+  async createTag(uuid: UUID, data: CreateApplicationTagInput): Promise<Tag[]> {
+    return this.http.post<Tag[]>(`/applications/${uuid}/tags`, data);
+  }
+
+  /**
+   * Detach a tag from an application by tag UUID.
+   */
+  async deleteTag(uuid: UUID, tagUuid: UUID): Promise<MessageResponse> {
+    return this.http.delete<MessageResponse>(`/applications/${uuid}/tags/${tagUuid}`);
+  }
+
+  /**
+   * List available rollback images for an application.
+   */
+  async listRollbackImages(uuid: UUID): Promise<RollbackImagesResponse> {
+    return this.http.get<RollbackImagesResponse>(`/applications/${uuid}/rollback-images`);
+  }
+
+  /**
+   * Queue a rollback deployment for an application.
+   */
+  async rollback(uuid: UUID, data: RollbackApplicationInput): Promise<RollbackApplicationResponse> {
+    return this.http.post<RollbackApplicationResponse>(`/applications/${uuid}/rollback`, data);
+  }
+
+  /**
+   * List destinations (primary + additional) for a standalone application.
+   */
+  async listDestinations<T = unknown>(uuid: UUID): Promise<T> {
+    return this.http.get<T>(`/applications/${uuid}/destinations`);
+  }
+
+  /**
+   * Attach an additional standalone Docker destination to an application.
+   */
+  async addDestination<T = unknown>(
+    uuid: UUID,
+    data: AddApplicationDestinationInput
+  ): Promise<T> {
+    return this.http.post<T>(`/applications/${uuid}/destinations`, data);
+  }
+
+  /**
+   * Remove an additional destination from an application.
+   */
+  async removeDestination(uuid: UUID, destinationUuid: UUID): Promise<MessageResponse> {
+    return this.http.delete<MessageResponse>(
+      `/applications/${uuid}/destinations/${destinationUuid}`
+    );
   }
 }

@@ -19,9 +19,28 @@ export class SystemResource {
   }
 
   /**
-   * Check the health of the Coolify API
+   * Check the health of the Coolify API.
+   *
+   * Current spec exposes `/health`; older installs use `/healthcheck`. This
+   * method tries `/health` first and falls back to `/healthcheck` on 404.
    */
   async healthCheck(): Promise<HealthCheckResponse> {
+    try {
+      return await this.http.get<HealthCheckResponse>('/health');
+    } catch (err: unknown) {
+      const status = (err as { status?: number })?.status;
+      if (status === 404) {
+        return this.http.get<HealthCheckResponse>('/healthcheck');
+      }
+      throw err;
+    }
+  }
+
+  /**
+   * Direct healthcheck against the legacy `/healthcheck` path. Kept for
+   * back-compat with older Coolify versions.
+   */
+  async healthCheckLegacy(): Promise<HealthCheckResponse> {
     return this.http.get<HealthCheckResponse>('/healthcheck');
   }
 
