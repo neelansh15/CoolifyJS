@@ -278,3 +278,146 @@ export interface ApplicationEnvs {
 export interface ApplicationLogs {
   logs: string[];
 }
+
+/**
+ * Move application input
+ */
+export interface MoveApplicationInput {
+  environment_uuid: UUID;
+}
+
+/**
+ * Move application response
+ */
+export interface MoveApplicationResponse {
+  message: string;
+  uuid?: UUID;
+  project_uuid?: UUID;
+  environment_uuid?: UUID;
+}
+
+/**
+ * Migrate application input
+ */
+export interface MigrateApplicationInput {
+  destination_uuid: UUID;
+  migrate_volumes?: boolean;
+}
+
+/**
+ * Clone application input
+ */
+export interface CloneApplicationInput {
+  destination_uuid: UUID;
+  name?: string | null;
+  clone_volumes?: boolean;
+}
+
+/**
+ * Clone application response
+ */
+export interface CloneApplicationResponse {
+  uuid: UUID;
+  message: string;
+}
+
+/**
+ * Application storage type
+ */
+export type ApplicationStorageType = 'persistent' | 'file';
+
+/**
+ * Application storage entry
+ */
+export interface ApplicationStorage {
+  id?: number;
+  uuid?: UUID;
+  type?: ApplicationStorageType;
+  name?: string;
+  mount_path?: string;
+  content?: string | null;
+  is_directory?: boolean;
+  fs_path?: string;
+  is_preview_suffix_enabled?: boolean;
+  [key: string]: unknown;
+}
+
+/**
+ * Application storages listing
+ */
+export interface ApplicationStorages {
+  persistent_storages: ApplicationStorage[];
+  file_storages: ApplicationStorage[];
+}
+
+/**
+ * Create application storage input
+ */
+export interface CreateApplicationStorage {
+  type: ApplicationStorageType;
+  name?: string;
+  mount_path: string;
+  content?: string | null;
+  is_directory?: boolean;
+  fs_path?: string;
+}
+
+/**
+ * Update application storage input
+ */
+export interface UpdateApplicationStorage {
+  uuid?: UUID;
+  id?: number;
+  type: ApplicationStorageType;
+  is_preview_suffix_enabled?: boolean;
+  name?: string;
+  mount_path?: string;
+  content?: string | null;
+}
+
+/**
+ * Rollback image entry
+ */
+export interface RollbackImage {
+  tag: string;
+  created_at: string;
+  is_current: boolean;
+}
+
+/**
+ * List rollback images response
+ */
+export interface RollbackImagesResponse {
+  current: string | null;
+  images: RollbackImage[];
+}
+
+/**
+ * Rollback application input
+ */
+export interface RollbackApplicationInput {
+  commit: string;
+}
+
+/**
+ * Rollback application response
+ */
+export interface RollbackApplicationResponse {
+  message: string;
+  deployment_uuid?: UUID;
+}
+
+/**
+ * Add application destination input
+ */
+export interface AddApplicationDestinationInput {
+  destination_uuid: UUID;
+}
+
+/**
+ * Create application tag input
+ */
+export interface CreateApplicationTagInput {
+  tag_name?: string;
+  tag_names?: string[];
+}
